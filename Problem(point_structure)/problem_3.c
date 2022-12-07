@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+struct Point{
+    float x;
+    float y;
+};
+
+struct Traiangle{
+    struct Point A;
+    struct Point B;
+    struct Point C;
+};
+
+struct Point centroid(struct Traiangle t)
+{
+    struct Point ans;
+    ans.x = (t.A.x + t.B.x + t.C.x) / 3;
+    ans.y = (t.A.y + t.B.y + t.C.y) / 3;
+
+    return ans;
+}
+
+int main()
+{
+    struct Point p1 = {1, 1};
+    struct Point p2 = {4, 5};
+    struct Point p3 = {1, 5};
+
+    struct Traiangle t = {p1, p2, p3};
+
+    struct Point c = centroid(t);
+
+    printf("%.2f %.2f\n", c.x, c.y);
+
+    return 0;
+}
